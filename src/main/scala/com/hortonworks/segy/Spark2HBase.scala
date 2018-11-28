@@ -70,27 +70,27 @@ object Spark2HBase {
       classOf[HFileOutputFormat2],
       conf)
 
-    //val conn = ConnectionFactory.createConnection(conf)
-    //val table = conn.getTable(TableName.valueOf(tableName))
+    val conn = ConnectionFactory.createConnection(conf)
+    val table = conn.getTable(TableName.valueOf(tableName))
 
-    //try {
-    //  val regionLocator = conn.getRegionLocator(TableName.valueOf(tableName))
-    //  val list= List( regionLocator.getAllRegionLocations)
-    //  list.foreach(println)
-    //  val job = Job.getInstance(conf)
+    try {
+      val regionLocator = conn.getRegionLocator(TableName.valueOf(tableName))
+      val list= List( regionLocator.getAllRegionLocations)
+      list.foreach(println)
+      val job = Job.getInstance(conf)
 
-    //  job.setJobName("DumpFile")
-    //  job.setMapOutputKeyClass(classOf[ImmutableBytesWritable])
-    //  job.setMapOutputValueClass(classOf[KeyValue])
-    //  HFileOutputFormat2.configureIncrementalLoad(job, table, regionLocator)
+      job.setJobName("DumpFile")
+      job.setMapOutputKeyClass(classOf[ImmutableBytesWritable])
+      job.setMapOutputValueClass(classOf[KeyValue])
+      HFileOutputFormat2.configureIncrementalLoad(job, table, regionLocator)
 
-    //  val load = new LoadIncrementalHFiles(conf)
-    //  load.doBulkLoad(new Path(stagingFolder), conn.getAdmin, table, regionLocator)
+      val load = new LoadIncrementalHFiles(conf)
+      load.doBulkLoad(new Path(stagingFolder), conn.getAdmin, table, regionLocator)
 
-    //} finally {
-    //  table.close()
-    //  conn.close()
-    //}
+    } finally {
+      table.close()
+      conn.close()
+    }
   }
 }
 

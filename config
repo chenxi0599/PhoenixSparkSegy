@@ -1,0 +1,4 @@
+records_to_simulate=10000
+htablename=phoenixtable
+columnfamily=cf
+hfile_output=/tmp/phoenix_files
