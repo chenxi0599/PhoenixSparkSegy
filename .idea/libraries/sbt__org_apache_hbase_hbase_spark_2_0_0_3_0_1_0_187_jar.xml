@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: org.apache.hbase:hbase-spark:2.0.0.3.0.1.0-187:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.hbase/hbase-spark/jars/hbase-spark-2.0.0.3.0.1.0-187.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
